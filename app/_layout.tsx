@@ -1,16 +1,14 @@
-import "../utils/i18n";
+import { COLORS } from "@/constants/constants";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "react-native";
+import useCurrencyStore from "../store/useCurrencyStore";
+import "../utils/i18n";
+import i18n from "../utils/i18n";
+import AuthScreen from "./AuthScreen";
 import DemoScreen from "./DemoScreen";
-import { COLORS, SPACINGS } from "@/constants/constants";
-import { StatusBar, StyleSheet } from "react-native";
 import SearchResultsScreen, {
   SearchResultsScreenRouteParams,
 } from "./SearchResultsScreen";
-import i18n from "../utils/i18n";
-import useCurrencyStore from "../store/useCurrencyStore";
-import CCButton from "../components/CCButton";
-import { deletePasskey } from "@/utils/authUtils";
-import AuthScreen from "./AuthScreen";
 
 export type RootStackParamList = {
   DemoScreen: undefined;
@@ -52,16 +50,6 @@ export default function HomeScreen() {
           options={{
             title: i18n.t("welcome"),
             headerBackVisible: false,
-            headerRight: () => {
-              return (
-                <CCButton
-                  title={"Reset Auth"}
-                  onPress={async () => {
-                    await deletePasskey();
-                  }}
-                />
-              );
-            },
           }}
         />
         <Stack.Screen
@@ -73,17 +61,3 @@ export default function HomeScreen() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: COLORS.background,
-  },
-  text: {
-    fontSize: SPACINGS.S_2,
-    marginBottom: SPACINGS.S_2,
-    color: COLORS.textPrimary,
-  },
-});

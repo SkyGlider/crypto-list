@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { View, TextInput, Text, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { getPasskey, hasSavedPasskey, savePasskey } from "@/utils/authUtils";
 import { COLORS, SPACINGS } from "@/constants/constants";
-import { RootStackParamList } from "./_layout";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { getPasskey, hasSavedPasskey, savePasskey } from "@/utils/auth";
 import i18n from "@/utils/i18n";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import React, { useState } from "react";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import CCButton from "../components/CCButton";
+import { RootStackParamList } from "./_layout";
 
 type SetupPasskeyScreenNavigationProp =
   NativeStackNavigationProp<RootStackParamList>;
@@ -17,34 +17,41 @@ export default function AuthScreen() {
   const navigation = useNavigation<SetupPasskeyScreenNavigationProp>();
   const [firstTimeLogin, setFirstTimeLogin] = useState(false);
 
-  useEffect(() => {
+  useFocusEffect(() => {
     const check = async () => {
       const hasKey = await hasSavedPasskey();
       setFirstTimeLogin(!hasKey);
     };
     check();
-  }, []);
+  });
 
-  const handleSave = async () => {
-    if (enteredPasskey.trim()) {
+  const navigateToDemo = () => {
+    setEnteredPasskey("");
+    navigation.navigate("DemoScreen");
+  }
+
+  const handleAction = async () => {
+    if (firstTimeLogin && enteredPasskey.trim()) {
       await savePasskey(enteredPasskey);
-      navigation.navigate("DemoScreen");
+      navigateToDemo();
+      return;
     }
-  };
-
-  const checkPasskey = async () => {
+    if (firstTimeLogin && !enteredPasskey.trim()) {
+      setError(i18n.t("invalidPasskey"));
+      return;
+    }
     const stored = await getPasskey();
-    if (enteredPasskey === stored) {
-      navigation.navigate("DemoScreen");
-    } else {
-      setError(i18n.t("invalidPasskey") + " " + stored);
+    if (stored && enteredPasskey === stored) {
+      navigateToDemo();
+      return;
     }
-  };
+    setError(i18n.t("invalidPasskey") + " " + stored);
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-        {firstTimeLogin ? i18n.t("createPasskey") : i18n.t("enterPasskey")}
+        {i18n.t(firstTimeLogin ? "createPasskey" : "enterPasskey")}
       </Text>
       <TextInput
         value={enteredPasskey}
@@ -54,8 +61,8 @@ export default function AuthScreen() {
         autoFocus={true}
       />
       <CCButton
-        title={firstTimeLogin ? i18n.t("save") : i18n.t("submit")}
-        onPress={firstTimeLogin ? handleSave : checkPasskey}
+        title={i18n.t(firstTimeLogin ? "save" : "submit")}
+        onPress={handleAction}
       />
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
     </View>
@@ -73,6 +80,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: SPACINGS.S_2,
     color: COLORS.textPrimary,
+    textAlign: "center"
   },
   errorText: {
     fontSize: SPACINGS.S_2,
@@ -82,5 +90,9 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     fontSize: SPACINGS.S_2,
     textAlign: "center",
+    width: 200,
+    borderWidth: 1,
+    borderRadius: SPACINGS.S_1,
+    borderColor: COLORS.textPrimary
   },
 });
