@@ -1,6 +1,4 @@
 import * as SecureStore from "expo-secure-store";
-import * as LocalAuthentication from "expo-local-authentication";
-import { Alert } from "react-native";
 
 const PASSKEY = "passkey";
 
@@ -19,19 +17,4 @@ export const hasSavedPasskey = async () => {
 
 export const deletePasskey = async () => {
   await SecureStore.deleteItemAsync(PASSKEY);
-};
-
-export const authenticateWithBiometrics = async () => {
-  const compatible = await LocalAuthentication.hasHardwareAsync();
-  if (!compatible) {
-    Alert.alert("Biometrics unavailable!");
-    return false;
-  }
-
-  const enrolled = await LocalAuthentication.isEnrolledAsync();
-  if (!enrolled) return false;
-
-  const result = await LocalAuthentication.authenticateAsync();
-
-  return result.success;
 };
