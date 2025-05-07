@@ -2,6 +2,9 @@
 
 A modern React Native application built using **Expo**, **Zustand**, **React Navigation**, and **React Query** to demonstrate how to display crypto and fiat currencies with a search feature, authentication, offline simulation, and clean UI.
 
+[untitled (1).webm](https://github.com/user-attachments/assets/a4896d0a-953b-4ade-bab9-a73d329425b1)
+
+
 ## 🧠 Problem Statement
 
 The goal was to build a **reusable `CurrencyList`** capable of displaying both **Crypto** and **Fiat** currencies. The app should support:
