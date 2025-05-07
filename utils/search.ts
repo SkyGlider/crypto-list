@@ -1,6 +1,6 @@
 import { CurrencyInfo } from "@/constants/constants";
 
-export const filterCurrencies = (search: string, data: CurrencyInfo[]) => {
+export const filterCurrencies = (data: CurrencyInfo[], search: string) => {
   const lower = search.toLowerCase();
   return data.filter(
     (c) =>

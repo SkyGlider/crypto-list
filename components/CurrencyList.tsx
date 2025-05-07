@@ -1,20 +1,20 @@
+import { RootStackParamList } from "@/app/_layout";
 import { COLORS, CurrencyInfo, SPACINGS } from "@/constants/constants";
+import i18n from "@/utils/i18n";
+import { filterCurrencies } from "@/utils/search";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useMemo, useState } from "react";
 import {
   FlatList,
-  View,
   StyleSheet,
-  TouchableOpacity,
   Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import CurrencyListSearchBar from "./CurrencyListSearchBar";
 import CurrencyListEmpty from "./CurrencyListEmpty";
 import CurrencyListItem from "./CurrencyListItem";
-import { useNavigation } from "@react-navigation/native";
-import { RootStackParamList } from "@/app/_layout";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import i18n from "@/utils/i18n";
-import { filterCurrencies } from "@/utils/search";
+import CurrencyListSearchBar from "./CurrencyListSearchBar";
 
 // CurrencyList receives a list of CurrencyInfo objects to create the UI.
 interface CurrencyListProps {
@@ -35,7 +35,7 @@ const CurrencyList = ({
 
   // CurrencyList search feature that can be cancelled when the user clicks the back or close button
   const filterData = useMemo(
-    () => filterCurrencies(search, data),
+    () => filterCurrencies(data, search),
     [search, data]
   );
 
