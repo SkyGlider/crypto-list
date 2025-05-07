@@ -1,7 +1,7 @@
-import { COLORS, SPACINGS } from "@/constants/constants";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { COLORS, SPACINGS } from "./constants";
 
 interface CCIconButtonProps {
   title?: string;

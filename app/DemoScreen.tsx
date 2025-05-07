@@ -2,8 +2,8 @@ import React from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 import CCIconButton from "@/CCDesignSystem/CCIconButton";
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
 import CurrencyListFilter from "@/components/CurrencyListFilter";
-import { COLORS, SPACINGS } from "@/constants/constants";
 import { useCurrenciesQuery } from "@/hooks/useCurrencyQuery";
 import { deletePasskey } from "@/utils/auth";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";

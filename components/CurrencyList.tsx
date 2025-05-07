@@ -1,5 +1,6 @@
 import { RootStackParamList } from "@/app/_layout";
-import { COLORS, CurrencyInfo, SPACINGS } from "@/constants/constants";
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
+import { CurrencyInfo } from "@/constants/constants";
 import i18n from "@/utils/i18n";
 import { filterCurrencies } from "@/utils/search";
 import { useNavigation } from "@react-navigation/native";

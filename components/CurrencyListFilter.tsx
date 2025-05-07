@@ -1,8 +1,9 @@
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
+import { CurrencyType } from "@/constants/constants";
 import useCurrencyStore from "@/hooks/useCurrencyStore";
-import { COLORS, CurrencyType, SPACINGS } from "@/constants/constants";
-import React, { useEffect, useState } from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import i18n from "@/utils/i18n";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const FILTERS = [i18n.t("all"), CurrencyType.CRYPTO, CurrencyType.FIAT];
 

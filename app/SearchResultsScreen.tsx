@@ -1,5 +1,5 @@
 import CurrencyList from "@/components/CurrencyList";
-import { CurrencyInfo, SPACINGS } from "@/constants/constants";
+import { CurrencyInfo } from "@/constants/constants";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";

@@ -1,7 +1,7 @@
-import { COLORS, SPACINGS } from "@/constants/constants";
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StatusBar } from "react-native";
-import useCurrencyStore from "../hooks/useCurrencyStore";
 import "../utils/i18n";
 import i18n from "../utils/i18n";
 import AuthScreen from "./AuthScreen";
@@ -9,7 +9,6 @@ import DemoScreen from "./DemoScreen";
 import SearchResultsScreen, {
   SearchResultsScreenRouteParams,
 } from "./SearchResultsScreen";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export type RootStackParamList = {
   DemoScreen: undefined;

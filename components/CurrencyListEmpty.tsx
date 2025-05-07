@@ -1,8 +1,8 @@
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
 import i18n from "@/utils/i18n";
-import { COLORS, SPACINGS } from "@/constants/constants";
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 // CurrencyList includes an empty view for displaying an empty list.
 const CurrencyListEmpty = () => (

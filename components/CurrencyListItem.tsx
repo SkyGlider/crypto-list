@@ -1,7 +1,8 @@
-import React, { memo } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { COLORS, CurrencyInfo, SPACINGS } from "@/constants/constants";
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
+import { CurrencyInfo } from "@/constants/constants";
 import i18n from "@/utils/i18n";
+import React, { memo } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface CurrencyListItemProps {
   currency: CurrencyInfo;

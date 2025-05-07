@@ -1,8 +1,8 @@
-import { COLORS, SPACINGS } from "@/constants/constants";
-import React, { memo, useEffect, useState } from "react";
-import { View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
 import i18n from "@/utils/i18n";
+import { MaterialIcons } from "@expo/vector-icons";
+import React, { memo, useEffect, useState } from "react";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 
 const DEFAULT_DEBOUNCE_DURATION = 300; // Debounce delay: 300ms
 

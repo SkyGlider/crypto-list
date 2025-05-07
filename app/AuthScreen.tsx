@@ -1,4 +1,4 @@
-import { COLORS, SPACINGS } from "@/constants/constants";
+import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
 import { getPasskey, hasSavedPasskey, savePasskey } from "@/utils/auth";
 import i18n from "@/utils/i18n";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
