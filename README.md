@@ -35,13 +35,13 @@ The goal was to build a **reusable `CurrencyList`** capable of displaying both *
    │ ├── DemoScreen.tsx
    │ ├── SearchResultsScreen.tsx
    │ └── AuthScreen.tsx
-   ├── store/ 
-   │ └── # Zustand store (e.g. useCurrencyStore.ts)
    ├── api/ 
    │ └── # Simulated API handlers
    ├── hooks/
+   │ ├── tests/ # tests
    │ └── # Custom React Query hooks (e.g. useQuery() and useStore())
    └── utils/
+   │ ├── tests/ # tests
    │ └── # Utility functions like auth.ts, i18n.ts
    └── constants/
      └── # constants.ts
