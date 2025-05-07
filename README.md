@@ -1,6 +1,26 @@
-# Welcome to Crypto.com Demo Expo app 👋
+# 💱 Crypto-List Demo React Native App (With Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern React Native application built using **Expo**, **Zustand**, **React Navigation**, and **React Query** to demonstrate how to display crypto and fiat currencies with a search feature, authentication, offline simulation, and clean UI.
+
+## 🧠 Problem Statement
+
+The goal was to build a **reusable `CurrencyList`** capable of displaying both **Crypto** and **Fiat** currencies. The app should support:
+- A way to insert and clear currency data from a simulated local database.
+- A toggle to view either crypto, fiat, or purchasable currencies.
+- A rich search feature with icon indicators, debounce, and navigation to search results. (Bonus)
+- Passkey authentication on first launch. (Bonus)
+- Consistent styling and performance optimization. (Bonus)
+- Expandability with modular architecture.
+
+## 🧱 Tech Stack
+- **Expo + React Native** – mobile framework
+- **TypeScript** – for type safety
+- **Zustand** – global state management (I'm new to this please have mercy)
+- **React Navigation** – screen and tab navigation (Bonus, Could also use expo's navigation which is simpler)
+- **React Query** – caching, fetching, and async mutation handling (Bonus)
+- **Jest + Testing Library** – unit testing framework
+- **i18n-js** – internationalization (Bonus)
+- **Expo Secure Store** – secure storage (Bonus)
 
 ## Get started
 
@@ -13,38 +33,12 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 2. Start the app
 
    ```bash
-   npx expo start
+   npm run ios/android
    ```
 
-In the output, you'll find options to open the app in a
+## 🧪 Testing
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### Run tests
 ```bash
-npm run reset-project
-```
+npm test
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
