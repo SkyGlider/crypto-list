@@ -5,16 +5,18 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import CCButton from "../components/CCButton";
+import CCButton from "../ccds/CCButton";
 import { RootStackParamList } from "./_layout";
 
-type SetupPasskeyScreenNavigationProp =
-  NativeStackNavigationProp<RootStackParamList>;
+type AuthScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "AuthScreen"
+>;
 
 export default function AuthScreen() {
   const [enteredPasskey, setEnteredPasskey] = useState("");
   const [error, setError] = useState("");
-  const navigation = useNavigation<SetupPasskeyScreenNavigationProp>();
+  const navigation = useNavigation<AuthScreenNavigationProp>();
   const [firstTimeLogin, setFirstTimeLogin] = useState(false);
 
   useFocusEffect(() => {
@@ -27,8 +29,11 @@ export default function AuthScreen() {
 
   const navigateToDemo = () => {
     setEnteredPasskey("");
-    navigation.navigate("DemoScreen");
-  }
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "DemoScreen" }],
+    });
+  };
 
   const handleAction = async () => {
     if (firstTimeLogin && enteredPasskey.trim()) {
@@ -46,7 +51,7 @@ export default function AuthScreen() {
       return;
     }
     setError(i18n.t("invalidPasskey") + " " + stored);
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -74,13 +79,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: COLORS.background,
     gap: SPACINGS.S_1,
   },
   text: {
     fontSize: SPACINGS.S_2,
     color: COLORS.textPrimary,
-    textAlign: "center"
+    textAlign: "center",
   },
   errorText: {
     fontSize: SPACINGS.S_2,
@@ -93,6 +97,6 @@ const styles = StyleSheet.create({
     width: 200,
     borderWidth: 1,
     borderRadius: SPACINGS.S_1,
-    borderColor: COLORS.textPrimary
+    borderColor: COLORS.textPrimary,
   },
 });

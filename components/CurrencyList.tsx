@@ -1,5 +1,4 @@
-import useCurrencyStore from "@/store/useCurrencyStore";
-import { COLORS, SelectedCurrencyType, SPACINGS } from "@/constants/constants";
+import { COLORS, CurrencyInfo, SPACINGS } from "@/constants/constants";
 import React, { useMemo, useState } from "react";
 import {
   FlatList,
@@ -8,51 +7,43 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import CurrencySearchBar from "./CurrencySearchBar";
-import CurrencyEmptyView from "./CurrencyEmptyView";
+import CurrencyListSearchBar from "./CurrencyListSearchBar";
+import CurrencyListEmpty from "./CurrencyListEmpty";
 import CurrencyListItem from "./CurrencyListItem";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@/app/_layout";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import i18n from "@/utils/i18n";
+import { filterCurrencies } from "@/utils/search";
 
+// CurrencyList receives a list of CurrencyInfo objects to create the UI.
 interface CurrencyListProps {
   limit?: number;
   initialSearchValue?: string;
+  data: CurrencyInfo[];
 }
 
 type DemoScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-const CurrencyList = ({ limit, initialSearchValue }: CurrencyListProps) => {
+const CurrencyList = ({
+  limit,
+  initialSearchValue,
+  data,
+}: CurrencyListProps) => {
   const navigation = useNavigation<DemoScreenNavigationProp>();
-  const { cryptos, fiats, selectedCurrency } = useCurrencyStore();
   const [search, setSearch] = useState(initialSearchValue ?? "");
 
-  const data = useMemo(() => {
-    switch (selectedCurrency) {
-      case SelectedCurrencyType.CRYPTO:
-        return cryptos;
-      case SelectedCurrencyType.FIAT:
-        return fiats;
-      default:
-        return [...cryptos, ...fiats];
-    }
-  }, [cryptos, fiats, selectedCurrency]);
-
-  const filterData = useMemo(() => {
-    const lower = search.toLowerCase();
-    return data.filter(
-      (c) =>
-        c.name.toLowerCase().startsWith(lower) ||
-        c.name.toLowerCase().includes(" " + lower) ||
-        c.symbol.toLowerCase().startsWith(lower)
-    );
-  }, [search, data]);
+  // CurrencyList search feature that can be cancelled when the user clicks the back or close button
+  const filterData = useMemo(
+    () => filterCurrencies(search, data),
+    [search, data]
+  );
 
   const renderFooter = () => {
     const onShowMorePress = () => {
       navigation.navigate("SearchResultsScreen", {
         initialSearchValue: search,
+        data,
       });
     };
 
@@ -72,19 +63,19 @@ const CurrencyList = ({ limit, initialSearchValue }: CurrencyListProps) => {
 
   return (
     <View style={styles.container}>
-      <CurrencySearchBar
+      <CurrencyListSearchBar
         onChange={setSearch}
         initialValue={initialSearchValue}
       />
-      {filterData.length === 0 ? (
-        <CurrencyEmptyView />
-      ) : (
+      {Boolean(filterData.length) ? (
         <FlatList
           data={Boolean(limit) ? filterData.slice(0, limit) : filterData}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => <CurrencyListItem currency={item} />}
           ListFooterComponent={renderFooter()}
         />
+      ) : (
+        <CurrencyListEmpty />
       )}
     </View>
   );

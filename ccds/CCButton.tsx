@@ -2,13 +2,12 @@ import { COLORS, SPACINGS } from "@/constants/constants";
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const CCButton = ({
-  title,
-  onPress,
-}: {
+interface CCButtonProps {
   title: string;
-  onPress: () => void;
-}) => (
+  onPress: VoidFunction;
+}
+
+const CCButton = ({ title, onPress }: CCButtonProps) => (
   <TouchableOpacity style={styles.button} onPress={onPress}>
     <Text style={styles.text}>{title}</Text>
   </TouchableOpacity>

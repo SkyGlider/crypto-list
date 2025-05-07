@@ -6,17 +6,17 @@ import i18n from "@/utils/i18n";
 
 const DEFAULT_DEBOUNCE_DURATION = 300; // Debounce delay: 300ms
 
-interface CurrencySearchBarProps {
+interface CurrencyListSearchBarProps {
   onChange: (text: string) => void;
   initialValue?: string;
   placeholder?: string;
 }
 
-const CurrencySearchBar = ({
+const CurrencyListSearchBar = ({
   onChange,
   initialValue,
   placeholder,
-}: CurrencySearchBarProps) => {
+}: CurrencyListSearchBarProps) => {
   const [value, setValue] = useState(initialValue ?? "");
   const [debouncedVal, setDebouncedVal] = useState(value);
 
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default memo(CurrencySearchBar);
+export default memo(CurrencyListSearchBar);

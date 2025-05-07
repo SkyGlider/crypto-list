@@ -23,12 +23,6 @@ export enum CurrencyType {
   FIAT = "Fiat",
 }
 
-export enum SelectedCurrencyType {
-  CRYPTO = CurrencyType.CRYPTO,
-  FIAT = CurrencyType.FIAT,
-  ALL = "All",
-}
-
 export type CurrencyInfo = {
   id: string;
   name: string;
@@ -36,7 +30,7 @@ export type CurrencyInfo = {
   code?: string;
 };
 
-// Mock DB Data
+// Mock DB Data - List A
 export const CRYPTOS: CurrencyInfo[] = [
   {
     id: "BTC",
@@ -110,6 +104,7 @@ export const CRYPTOS: CurrencyInfo[] = [
   },
 ];
 
+// Mock DB Data - List B
 export const FIATS: CurrencyInfo[] = [
   {
     id: "SGD",
@@ -154,8 +149,3 @@ export const FIATS: CurrencyInfo[] = [
     code: "USD",
   },
 ];
-
-
-
-
-

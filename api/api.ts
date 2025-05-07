@@ -3,9 +3,9 @@ import {
   CurrencyInfo,
   CurrencyType,
   FIATS,
-  SelectedCurrencyType,
 } from "@/constants/constants";
 
+// API simulated to provide the two datasets which contain CurrencyInfo objects
 export const fetchCurrencyList = (
   listType: CurrencyType
 ): Promise<CurrencyInfo[]> => {
@@ -14,15 +14,4 @@ export const fetchCurrencyList = (
       resolve(listType === CurrencyType.CRYPTO ? CRYPTOS : FIATS);
     }, 500); // simulate 500ms delay
   });
-};
-
-export const fetchAllCurrencyLists = async (): Promise<{
-  cryptos: CurrencyInfo[];
-  fiats: CurrencyInfo[];
-}> => {
-  const [cryptos, fiats] = await Promise.all([
-    fetchCurrencyList(CurrencyType.CRYPTO),
-    fetchCurrencyList(CurrencyType.FIAT),
-  ]);
-  return { cryptos, fiats };
 };
