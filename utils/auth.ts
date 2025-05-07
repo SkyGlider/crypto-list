@@ -1,6 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 
-const PASSKEY = "passkey";
+export const PASSKEY = "passkey";
 
 export const savePasskey = async (passkey: string) => {
   await SecureStore.setItemAsync(PASSKEY, passkey);
