@@ -1,16 +1,16 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
+import CCIconButton from "@/CCDesignSystem/CCIconButton";
 import CurrencyListFilter from "@/components/CurrencyListFilter";
 import { COLORS, SPACINGS } from "@/constants/constants";
+import { useCurrenciesQuery } from "@/hooks/useCurrencyQuery";
 import { deletePasskey } from "@/utils/auth";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "expo-router";
 import CurrencyList from "../components/CurrencyList";
 import useCurrencyStore from "../hooks/useCurrencyStore";
 import i18n from "../utils/i18n";
-import { useCurrenciesQuery } from "@/hooks/useCurrencyQuery";
-import CCIconButton from "@/ccds/CCIconButton";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./_layout";
 
 const MAX_VISIBLE_RESULTS = 2;
