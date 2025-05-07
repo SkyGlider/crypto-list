@@ -12,7 +12,9 @@ The goal was to build a **reusable `CurrencyList`** capable of displaying both *
 - Consistent styling and performance optimization. (Bonus)
 - Expandability with modular architecture.
 
-## 🧱 Tech Stack
+## 🏗️ Architecture
+
+### 🧱 Tech Stack
 - **Expo + React Native** – mobile framework
 - **TypeScript** – for type safety
 - **Zustand** – global state management (I'm new to this please have mercy)
@@ -22,7 +24,31 @@ The goal was to build a **reusable `CurrencyList`** capable of displaying both *
 - **i18n-js** – internationalization (Bonus)
 - **Expo Secure Store** – secure storage (Bonus)
 
+## 🗂️ Folder Structure
+   ```bash
+   app/
+   ├── components/
+   │ └── # UI components
+   ├── CCDesignSystem/ 
+   │ └── # A deisgn system for reusable components across the entire app. (e.g. Buttons, Icon)
+   ├── screens/
+   │ ├── DemoScreen.tsx
+   │ ├── SearchResultsScreen.tsx
+   │ └── AuthScreen.tsx
+   ├── store/ 
+   │ └── # Zustand store (e.g. useCurrencyStore.ts)
+   ├── api/ 
+   │ └── # Simulated API handlers
+   ├── hooks/
+   │ └── # Custom React Query hooks (e.g. useQuery() and useStore())
+   └── utils/
+   │ └── # Utility functions like auth.ts, i18n.ts
+   └── constants/
+     └── # constants.ts
+   ```
+
 ## Get started
+
 
 1. Install dependencies
 
