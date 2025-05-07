@@ -23,6 +23,7 @@ The goal was to build a **reusable `CurrencyList`** capable of displaying both *
 - **Zustand** – global state management (I'm new to this please have mercy)
 - **React Navigation** – screen and tab navigation (Bonus, Could also use expo's navigation which is simpler)
 - **React Query** – caching, fetching, and async mutation handling (Bonus)
+- **CCDS** – created a design system called CC Design System for common UI components (Bonus)
 - **Jest + Testing Library** – unit testing framework
 - **i18n-js** – internationalization (Bonus)
 - **Expo Secure Store** – secure storage (Bonus)
