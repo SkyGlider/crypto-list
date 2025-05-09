@@ -9,7 +9,7 @@ A modern React Native application built using **Expo**, **Zustand**, **React Nav
 
 The goal was to build a **reusable `CurrencyList`** capable of displaying both **Crypto** and **Fiat** currencies. The app should support:
 - A way to insert and clear currency data from a simulated local database.
-- A toggle to view either crypto, fiat, or purchasable currencies.
+- A toggle to view either crypto, fiat, or all currencies.
 - A rich search feature with icon indicators, debounce, and navigation to search results. (Bonus)
 - Passkey authentication on first launch. (Bonus)
 - Consistent styling and performance optimization. (Bonus)
