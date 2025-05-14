@@ -1,4 +1,4 @@
-import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
+import { COLORS, SPACINGS } from "@/ccds/constants";
 import { CurrencyInfo } from "@/constants/constants";
 import i18n from "@/utils/i18n";
 import React, { memo } from "react";

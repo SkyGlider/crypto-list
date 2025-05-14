@@ -1,11 +1,11 @@
-import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
+import { COLORS, SPACINGS } from "@/ccds/constants";
 import { getPasskey, hasSavedPasskey, savePasskey } from "@/utils/auth";
 import i18n from "@/utils/i18n";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import CCButton from "../CCDesignSystem/CCButton";
+import CCButton from "../ccds/CCButton";
 import { RootStackParamList } from "./_layout";
 
 type AuthScreenNavigationProp = NativeStackNavigationProp<

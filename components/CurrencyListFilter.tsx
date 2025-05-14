@@ -1,4 +1,4 @@
-import { COLORS, SPACINGS } from "@/CCDesignSystem/constants";
+import { COLORS, SPACINGS } from "@/ccds/constants";
 import { CurrencyType } from "@/constants/constants";
 import useCurrencyStore from "@/hooks/useCurrencyStore";
 import i18n from "@/utils/i18n";
